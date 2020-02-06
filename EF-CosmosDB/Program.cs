@@ -198,6 +198,10 @@ namespace EF_CosmosDB
         }
         private static void DeleteTaskFromUser(User currentUser, CosmosContext context)
         {
+            if (currentUser.ToDoList == null)
+            {
+                currentUser.ToDoList = new List<Task> { };
+            }
             bool keepLooping = true;
             while (keepLooping)
             {
@@ -252,6 +256,7 @@ namespace EF_CosmosDB
         {
             while (stringInput == null || stringInput.Trim().Length < 5)
             {
+                Console.Clear();
                 Console.WriteLine("You have to write something, and more than 5 characters.");
                 try
                 {
