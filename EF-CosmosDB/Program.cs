@@ -198,11 +198,11 @@ namespace EF_CosmosDB
         }
         private static void DeleteTaskFromUser(User currentUser, CosmosContext context)
         {
+            bool keepLooping = true;
             if (currentUser.ToDoList == null)
             {
                 currentUser.ToDoList = new List<Task> { };
             }
-            bool keepLooping = true;
             while (keepLooping)
             {
                 if (currentUser.ToDoList.Any())
